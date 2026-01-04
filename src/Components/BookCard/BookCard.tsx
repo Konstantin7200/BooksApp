@@ -2,7 +2,7 @@ import type { FC } from "react";
 import type { Book } from "../../types";
 import st from "./BookCard.module.css"
 import { useDispatch } from "react-redux";
-import { deleteBook, markAsRead } from "../../state/bookSlice";
+import { deleteBook, markAsRead, setBookToEdit } from "../../state/bookSlice";
 
 interface BookCardProps{
     book:Book
@@ -24,6 +24,7 @@ export const BookCard:FC<BookCardProps>=({book})=>{
             <p>{book.id}</p>
             <button onClick={()=>dispatch(markAsRead(book.id))}>Mark as read</button>
             <button onClick={()=>dispatch(deleteBook(book.id))}>Delete</button>
+            <button onClick={()=>dispatch(setBookToEdit(book))}>Edit</button>
         </div>
     )
 }
