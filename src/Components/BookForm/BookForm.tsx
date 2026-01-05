@@ -1,5 +1,5 @@
 import { useRef, useState, type FC, type FormEvent } from "react";
-import type { Book, Genres, Statuses } from "../../types";
+import type { Book, Genre, Status } from "../../types";
 import { useDispatch } from "react-redux";
 import { addBook, saveBook } from "../../state/bookSlice";
 
@@ -8,8 +8,8 @@ interface BookFormProps{
 }
 
 export const BookForm:FC<BookFormProps>=({book})=>{
-    const genres:Genres[]=["Fantasy", "Sci-Fi", "Romance", "Mystery", "Thriller", "Horror", "Historical Fiction", "Biography", "Self-Help", "History"]
-    const statuses:Statuses[]=['Reading',"Want to read","Already read"]
+    const genres:Genre[]=["Fantasy", "Sci-Fi", "Romance", "Mystery", "Thriller", "Horror", "Historical Fiction", "Biography", "Self-Help", "History"]
+    const statuses:Status[]=['Reading',"Want to read","Already read"]
     const dispatch=useDispatch();
     const nameRef=useRef<HTMLInputElement>(null)
     const yearRef=useRef<HTMLInputElement>(null)
@@ -44,8 +44,8 @@ export const BookForm:FC<BookFormProps>=({book})=>{
             const createdBook:Book={
                 name:nameRef.current!.value,
                 author:authorRef.current!.value,
-                genre:genreRef.current!.value as Genres,
-                status:statusRef.current!.value as Statuses,
+                genre:genreRef.current!.value as Genre,
+                status:statusRef.current!.value as Status,
                 publishingYear:Number(yearRef.current!.value),
                 coverUrl:coverRef.current!.value,
                 description:descriptionRef.current!.value,
