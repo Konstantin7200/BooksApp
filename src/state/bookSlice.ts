@@ -11,7 +11,7 @@ const initialState:booksInterface={
     ],
     lastID:0,
     bookEdited:null,
-    filter:{status:null,genre:null,searchQueue:''},
+    filter:{status:null,genre:null,searchQueue:'',searchBy:'name'},
     sort:{sortBy:'name',sortOrder:'ascending'}
 }
 interface booksInterface{
@@ -64,7 +64,7 @@ const sortSelector=(state:RootState)=>state.books.sort
 export const filteredBooksSelector=createSelector(
     [filtersSelector,booksSelector,sortSelector],
     (filtersSelector,booksSelector,sortSelector):Book[]=>{
-        const filteredBooks=booksSelector.filter((book)=>(book.genre===filtersSelector.genre||filtersSelector.genre===null)&&(book.status===filtersSelector.status||filtersSelector.status===null)&&(book.name.toLowerCase().includes(filtersSelector.searchQueue.toLowerCase())))
+        const filteredBooks=booksSelector.filter((book)=>(book.genre===filtersSelector.genre||filtersSelector.genre===null)&&(book.status===filtersSelector.status||filtersSelector.status===null)&&(book[filtersSelector.searchBy].toLowerCase().includes(filtersSelector.searchQueue.toLowerCase())))
         if(sortSelector.sortBy=='name')
         {
             if(sortSelector.sortOrder=='ascending')

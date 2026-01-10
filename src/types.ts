@@ -13,7 +13,8 @@ export type Book={
 export type Filter={
     status:Status|null,
     genre:Genre|null,
-    searchQueue:string
+    searchQueue:string,
+    searchBy:SearchByOptions
 }
 export type SortSettings={
     sortBy:sortByOptions
@@ -21,5 +22,6 @@ export type SortSettings={
 }
 export type sortOrderOptions='ascending'|'descending'
 export type sortByOptions='publishingYear'|'name'
+export type SearchByOptions='author'|'name'
 export type Genre="Fantasy"| "Sci-Fi"| "Romance"| "Mystery"| "Thriller"| "Horror"| "Historical Fiction"| "Biography"| "Self-Help"| "History"
 export type Status="Already read"|"Want to read"|"Reading"

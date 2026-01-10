@@ -1,5 +1,5 @@
 import { useEffect, useState, type FC } from "react";
-import type { Filter, Genre, Status } from "../../types";
+import type { Filter, Genre, SearchByOptions, Status } from "../../types";
 import { useDispatch } from "react-redux";
 import { setFilter } from "../../state/bookSlice";
 
@@ -10,11 +10,13 @@ export const FilterBar:FC=()=>{
     const [genre,setGenre]=useState('')
     const [status,setStatus]=useState('')
     const [searchValue,setSearchValue]=useState('')
+    const [searchBy,setSearchBy]=useState('name')
     useEffect(()=>{
         const filter:Filter={
             status:status==''?null:status as Status,
             genre:genre==''?null:genre as Genre,
-            searchQueue:searchValue
+            searchQueue:searchValue,
+            searchBy:searchBy as SearchByOptions
         }
         dispatch(setFilter(filter))
     },[status,genre,searchValue])
@@ -30,7 +32,10 @@ export const FilterBar:FC=()=>{
             </select>
             <label htmlFor="nameSearch">
                 Search by
-                <select><option>Books name</option></select>
+                <select value={searchBy} onChange={(e)=>setSearchBy(e.target.value)}>
+                    <option value={'name'}>Books name</option>
+                    <option value={'author'}>Authors name</option>
+                </select>
                 <input id="nameSearch" value={searchValue} onChange={(e)=>setSearchValue(e.target.value)}></input>
             </label>
             
