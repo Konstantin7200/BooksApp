@@ -13,10 +13,11 @@ export const FilterBar:FC=()=>{
     useEffect(()=>{
         const filter:Filter={
             status:status==''?null:status as Status,
-            genre:genre==''?null:genre as Genre
+            genre:genre==''?null:genre as Genre,
+            searchQueue:searchValue
         }
         dispatch(setFilter(filter))
-    },[status,genre])
+    },[status,genre,searchValue])
     return(
         <div>
             <select value={status} onChange={(e)=>setStatus(e.target.value)}>
