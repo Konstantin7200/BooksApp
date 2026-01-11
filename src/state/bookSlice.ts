@@ -29,12 +29,12 @@ export const bookSlice=createSlice({
             state.lastID++;
             state.books.push({...action.payload,id:state.lastID})
         },
-        deleteBook:(state,action:PayloadAction<number>)=>{
-            state.books=state.books.filter((book)=>book.id!=action.payload)
+        deleteBook:(state,action:PayloadAction<Book>)=>{
+            state.books=state.books.filter((book)=>book.id!=action.payload.id)
         },
-        markAsRead:(state,action:PayloadAction<number>)=>{
+        markAsRead:(state,action:PayloadAction<Book>)=>{
             state.books.forEach(element => {
-                if(element.id==action.payload)
+                if(element.id==action.payload.id)
                 {
                     element.status='Already read'
                 }
@@ -58,7 +58,7 @@ export const bookSlice=createSlice({
 
 
 const filtersSelector=(state:RootState)=>state.books.filter
-const booksSelector=(state:RootState)=>state.books.books
+export const booksSelector=(state:RootState)=>state.books.books
 const sortSelector=(state:RootState)=>state.books.sort
 
 export const filteredBooksSelector=createSelector(
