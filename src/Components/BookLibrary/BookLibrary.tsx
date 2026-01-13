@@ -4,7 +4,7 @@ import { BookCard } from "../BookCard/BookCard";
 import st from "./BookLibrary.module.css"
 import { filteredBooksSelector } from "../../state/bookSlice";
 import { FilterBar } from "../FilterBar/FIlterBar";
-import SortBar from "../SortBar";
+import SortBar from "../SortBar/SortBar";
 
 export const BookLibrary:FC=()=>{
     const books=useSelector(filteredBooksSelector)

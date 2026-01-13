@@ -3,8 +3,8 @@ import './App.css'
 import { BookForm } from './Components/BookForm/BookForm'
 import { BookLibrary } from './Components/BookLibrary/BookLibrary'
 import type { RootState } from './state/store'
-import { Statistics } from './Components/Statistics'
-import { FavroritsList } from './Components/FavoritesList'
+import { Statistics } from './Components/Statistics/Statistics'
+import { FavroritsList } from './Components/FavoritesList/FavoritesList'
 
 function App() {
   const editedBook=useSelector((state:RootState)=>state.books.bookEdited)

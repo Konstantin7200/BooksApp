@@ -1,7 +1,7 @@
 import { createSelector, createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Book } from "../types";
 import type { RootState } from "./store";
-import { booksSelector, deleteBook } from "./bookSlice";
+import { booksSelector, deleteBook, saveBook } from "./bookSlice";
 
 interface initialInterface{
     favoriteBooks:Book[]
@@ -38,6 +38,9 @@ const favoriteBooksSlice=createSlice({
         builder
             .addCase(deleteBook,(state,action:PayloadAction<Book>)=>{
                 state.favoriteBooks=state.favoriteBooks.filter((book)=>book.id!==action.payload.id)
+            })
+            .addCase(saveBook,(state,action:PayloadAction<Book>)=>{
+                state.favoriteBooks=state.favoriteBooks.map((book)=>book.id===action.payload.id?action.payload:book)
             })
     }
 })

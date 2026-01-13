@@ -1,6 +1,6 @@
 import type { FC } from "react"
 import { useSelector } from "react-redux"
-import { favoriteAuthorSelector, favoriteGenreSelector, statusStatisticsSelector } from "../state/bookSlice"
+import { favoriteAuthorSelector, favoriteGenreSelector, statusStatisticsSelector } from "../../state/bookSlice"
 
 export const Statistics:FC=()=>{
     const statusStats=useSelector(statusStatisticsSelector)

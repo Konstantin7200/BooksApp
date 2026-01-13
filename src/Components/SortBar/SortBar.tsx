@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react'
-import type { sortByOptions, sortOrderOptions, SortSettings } from '../types'
+import type { sortByOptions, sortOrderOptions, SortSettings } from '../../types'
 import { useDispatch } from 'react-redux'
-import { setSort } from '../state/bookSlice'
+import { setSort } from '../../state/bookSlice'
 
 export function SortBar() {
   const sortOptions:('publishingYear'|'name')[]=['publishingYear','name']
