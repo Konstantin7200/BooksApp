@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux'
-import './App.css'
 import { BookForm } from './Components/BookForm/BookForm'
 import { BookLibrary } from './Components/BookLibrary/BookLibrary'
 import type { RootState } from './state/store'
@@ -9,7 +8,7 @@ import { FavroritsList } from './Components/FavoritesList/FavoritesList'
 function App() {
   const editedBook=useSelector((state:RootState)=>state.books.bookEdited)
   return (
-    <div className='App'>
+    <div className='w-100vw'>
       
       <BookForm/>
       <FavroritsList/>

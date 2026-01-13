@@ -1,6 +1,5 @@
 import type { FC } from "react";
 import type { Book } from "../../types";
-import st from "./BookCard.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBook, markAsRead, setBookToEdit } from "../../state/bookSlice";
 import {  type RootState } from "../../state/store";
@@ -20,21 +19,21 @@ export const BookCard:FC<BookCardProps>=({book})=>{
             dispatch(addBook(book))
     }
     return(
-        <div className={st.BookCard}>
-            <span style={{cursor:'pointer'}} onClick={handleClick}>{isFavorite?"★":"☆"}</span>
-            <h1>{book.name}</h1>
-            <div className={st.GridCont}>
-                <h2>{book.author}</h2>
-                <p>{book.genre}</p>
-                <p>{book.publishingYear}</p>
-                <p>{book.status}</p>
-                <img src={book.coverUrl} alt={"Cover of "+book.name}/>
+        <div className="border-black border-1 flex flex-col items-center rounded-md overflow-hidden">
+            <span className="cursor-pointer" onClick={handleClick}>{isFavorite?"★":"☆"}</span>
+            <h1 className="text-4xl font-bold pb-4">{book.name}</h1>
+            <div className="grid grid-cols-2 grid-rows-4 w-full">
+                <h2 className="text-2xl font-semibold text-right">{book.author}</h2>
+                <p className="text-2xl text-right">{book.genre}</p>
+                <p className="text-2xl text-right">{book.publishingYear}</p>
+                <p className="text-2xl text-right">{book.status}</p>
+                <img className="row-span-full" src={book.coverUrl} alt={"Cover of "+book.name}/>
             </div>
-            <p>{book.description}</p>
-            <div className={st.ButtonCont}>
-            <button onClick={()=>dispatch(markAsRead(book))}>Mark as read</button>
-            <button onClick={()=>dispatch(deleteBook(book))}>Delete</button>
-            <button onClick={()=>dispatch(setBookToEdit(book))}>Edit</button>
+            {book.description&&<p className="p-4">{book.description}</p>}
+            <div className="flex flex-row w-full justify-between">
+            <button className="w-full border-black border-1 p-2 cursor-pointer text-black hover:bg-blue-200 transition duration-300" onClick={()=>dispatch(markAsRead(book))}>Mark as read</button>
+            <button className="w-full border-black border-1 p-2 cursor-pointer text-black hover:bg-red-300 transition duration-300" onClick={()=>dispatch(deleteBook(book))}>Delete</button>
+            <button className="w-full border-black border-1 p-2 cursor-pointer text-black hover:bg-blue-200 transition duration-300" onClick={()=>dispatch(setBookToEdit(book))}>Edit</button>
             </div>
         </div>
     )
