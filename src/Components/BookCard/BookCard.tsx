@@ -25,16 +25,17 @@ export const BookCard:FC<BookCardProps>=({book})=>{
             <h1>{book.name}</h1>
             <div className={st.GridCont}>
                 <h2>{book.author}</h2>
-                <h2>{book.genre}</h2>
-                <h2>{book.publishingYear}</h2>
-                <h2>{book.status}</h2>
+                <p>{book.genre}</p>
+                <p>{book.publishingYear}</p>
+                <p>{book.status}</p>
                 <img src={book.coverUrl} alt={"Cover of "+book.name}/>
             </div>
             <p>{book.description}</p>
-            <p>{book.id}</p>
+            <div className={st.ButtonCont}>
             <button onClick={()=>dispatch(markAsRead(book))}>Mark as read</button>
             <button onClick={()=>dispatch(deleteBook(book))}>Delete</button>
             <button onClick={()=>dispatch(setBookToEdit(book))}>Edit</button>
+            </div>
         </div>
     )
 }

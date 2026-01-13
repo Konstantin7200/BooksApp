@@ -33,13 +33,10 @@ export const bookSlice=createSlice({
             state.books=state.books.filter((book)=>book.id!=action.payload.id)
         },
         markAsRead:(state,action:PayloadAction<Book>)=>{
-            state.books.forEach(element => {
-                if(element.id==action.payload.id)
-                {
-                    element.status='Already read'
-                }
-            });
-        },
+            state.books=state.books.map((book)=>book.id===action.payload.id?{
+                ...book,
+                status:'Already read'
+            }:book)},
         saveBook:(state,action:PayloadAction<Book>)=>{
             state.books=state.books.map(book =>book.id===action.payload.id?action.payload:book);
             state.bookEdited=null;
