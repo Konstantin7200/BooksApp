@@ -31,9 +31,9 @@ export const BookCard:FC<BookCardProps>=({book})=>{
             </div>
             {book.description&&<p className="p-4">{book.description}</p>}
             <div className="flex flex-row w-full justify-between">
-            <button className="w-full border-black border-1 p-2 cursor-pointer text-black hover:bg-blue-200 transition duration-300" onClick={()=>dispatch(markAsRead(book))}>Mark as read</button>
-            <button className="w-full border-black border-1 p-2 cursor-pointer text-black hover:bg-red-300 transition duration-300" onClick={()=>dispatch(deleteBook(book))}>Delete</button>
-            <button className="w-full border-black border-1 p-2 cursor-pointer text-black hover:bg-blue-200 transition duration-300" onClick={()=>dispatch(setBookToEdit(book))}>Edit</button>
+            <button className="w-full  p-2 cursor-pointer text-black hover:bg-blue-200 transition duration-300" onClick={()=>dispatch(markAsRead(book))}>Mark as read</button>
+            <button className="w-full  p-2 cursor-pointer text-black hover:bg-red-300 transition duration-300" onClick={()=>dispatch(deleteBook(book))}>Delete</button>
+            <button className="w-full  p-2 cursor-pointer text-black hover:bg-blue-200 transition duration-300" onClick={()=>dispatch(setBookToEdit(book))}>Edit</button>
             </div>
         </div>
     )

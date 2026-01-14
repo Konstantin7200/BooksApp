@@ -8,7 +8,7 @@ import { FavroritsList } from './Components/FavoritesList/FavoritesList'
 function App() {
   const editedBook=useSelector((state:RootState)=>state.books.bookEdited)
   return (
-    <div className='w-100vw'>
+    <div className='w-100vw flex flex-col items-center gap-5'>
       
       <BookForm/>
       <FavroritsList/>

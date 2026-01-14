@@ -19,12 +19,13 @@ export function SortBar() {
   },[sortOrder,sortBy])
   return (
     <div>
-        <select value={sortBy} onChange={(e)=>setSortBy(e.target.value)}>
-          <option value=''>Sort by</option>
+      <h1 className="font-bold text-2xl">Sort settings</h1>
+        <select className="border-blue-400 border rounded-md pr-2 pl-2 font-medium" value={sortBy} onChange={(e)=>setSortBy(e.target.value)}>
+          <option value='' key=' '>Sort by</option>
           {sortOptions.map((item)=><option value={item} key={item}>{item}</option>)}
         </select>
-        <select value={sortOrder} onChange={(e)=>setSortOrder(e.target.value)}>
-          <option value=''>Sorting order</option>
+        <select className="border-blue-400 border rounded-md pr-2 pl-2 font-medium" value={sortOrder} onChange={(e)=>setSortOrder(e.target.value)}>
+          <option value='' key=' '>Sorting order</option>
           {sortOrders.map((item)=><option value={item} key={item}>{item}</option>)}
         </select>
     </div>

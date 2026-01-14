@@ -27,11 +27,11 @@ export const BookForm:FC<BookFormProps>=({book})=>{
         if(!nameRef.current?.value)
             errorMessage+="name,"
         if(!yearRef.current?.value)
-            errorMessage+="year of publishing,"
+            errorMessage+="publishing year,"
         if(!authorRef.current?.value)
             errorMessage+="author,"
         if(!coverRef.current?.value)
-            errorMessage+="coverURL,"
+            errorMessage+="covers URL,"
         if(!genreRef.current?.value)
             errorMessage+="genre,"
         if(!statusRef.current?.value)
@@ -60,43 +60,43 @@ export const BookForm:FC<BookFormProps>=({book})=>{
 
     }
     return(
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="BooksName">
+        <form onSubmit={handleSubmit} className="flex flex-col w-100 gap-1 p-2 border-blue-400 items-center border-1 rounded-lg">
+            <label className="w-full flex justify-between font-semibold" htmlFor="BooksName">
                 Books name
-                <input defaultValue={book?.name} ref={nameRef} type='text' id="BooksName" />
+                <input className="border-blue-400 border rounded-lg overflow-scroll font-medium" defaultValue={book?.name} ref={nameRef} type='text' id="BooksName" />
             </label>
-            <label htmlFor="year">
+            <label className="w-full flex justify-between font-semibold" htmlFor="year">
                 Publishing year
-                <input defaultValue={book?.publishingYear} ref={yearRef} type='number' id="year" />
+                <input className="border-blue-400 border rounded-lg overflow-scroll font-medium" defaultValue={book?.publishingYear} ref={yearRef} type='number' id="year" />
             </label>
-            <label htmlFor="author">
+            <label className="w-full flex justify-between font-semibold" htmlFor="author">
                 Author
-                <input defaultValue={book?.author} ref={authorRef } type='text' id="author" />
+                <input className="border-blue-400 border rounded-lg overflow-scroll font-medium" defaultValue={book?.author} ref={authorRef } type='text' id="author" />
             </label>
-            <label htmlFor="description">
-                Description
-                <input defaultValue={book?.description} ref={descriptionRef} type="text" id="description" />
-            </label>
-            <label htmlFor="coverUrl">
+            <label className="w-full flex justify-between font-semibold" htmlFor="coverUrl">
                 Covers URL
-                <input defaultValue={book?.coverUrl} ref={coverRef} type='text' id="coverUrl" />
+                <input className="border-blue-400 border rounded-lg overflow-scroll font-medium" defaultValue={book?.coverUrl} ref={coverRef} type='text' id="coverUrl" />
             </label>
-            <label htmlFor="genre">
+            <label className="w-full flex justify-between font-semibold" htmlFor="genre">
                 Genre
-                <select defaultValue={book?.genre} ref={genreRef} id="genre">
+                <select className="border-blue-400 border rounded-md pr-2 pl-2 font-medium" defaultValue={book?.genre} ref={genreRef} id="genre">
                     <option value=''>Pick genre</option>
                     {genres.map((genre)=><option value={genre} key={genre}>{genre}</option>)}
                 </select>
             </label>
-            <label htmlFor="status">
+            <label className="w-full flex justify-between font-semibold" htmlFor="status">
                 Status
-                <select defaultValue={book?.status} ref={statusRef} id="status">
+                <select className="border-blue-400 border rounded-md pr-2 pl-2 font-medium" defaultValue={book?.status} ref={statusRef} id="status">
                     <option value=''>Pick status</option>
-                    {statuses.map((status)=><option value={status} key={status}>{status}</option>)}
+                    {statuses.map((status)=><option  value={status} key={status}>{status}</option>)}
                 </select>
             </label>
-            <button type="submit">{book?"Save book":"Add book"}</button>
-            <p>{errorMessage}</p>
+            <label className="w-full flex justify-between font-semibold" htmlFor="description">
+                Description(optional)
+                <input className="border-blue-400 border rounded-lg overflow-scroll font-medium" defaultValue={book?.description} ref={descriptionRef} type="text" id="description" />
+            </label>
+            {errorMessage&&<p className="bg-red-200 text-black p-2 rounded-md">{errorMessage}</p>}
+            <button className="rounded-md bg-blue-400 p-2 pr-8 pl-8 transition duration-400 hover:bg-blue-300" type="submit">{book?"Save book":"Add book"}</button>
         </form>
     )
 }
